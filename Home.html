@@ -1,0 +1,36 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipMatch</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1>FlipMatch</h1>
+        <div id="btns">
+            <button>Start Game</button>
+            <button>Themes</button>
+            <div id="dropdown">
+                <button>Football</button>
+                <button>Animie</button>
+                <button>Animals</button>
+                <button>Animation</button>
+            </div>
+            <button>Settings</button>
+            <div id="audio-controls">
+                <label for="audio-volume">Volume :</label>
+                <input type="range" id="audio-volume" min="0" max="100" value="50">
+                <p>Volume:<span id="volume-value">50</span>%</p>
+            </div>
+            <audio id="page-audio" autoplay loop>
+                <source src="#.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</body>
+
+</html>
