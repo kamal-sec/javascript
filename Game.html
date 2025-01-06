@@ -3,55 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="/assets/styles/Gamestyle.css">
 </head>
 <body>
-    <div id="all">
-        <div id="cards-easy">
-            <div id="1-easy"></div>
-        </div>
-
-        <div id="cards-medium">
-            <div id="1-medium"></div> 
-        </div>
-
-        <div id="cards-hard">
-            <div id="1-hard"></div>
-        </div>
-
-
-        <button id="Start">Start Game</button>
-
-        <nav id="game-info">
-            <div>
-                <label for="match">match:</label>
-                <input type="number" id="match">
-            </div>
-
-            <div>
-                <label for="moves">moves:</label>
-                <input type="number" id="moves">
-            </div>
-
-            <div>
-                <label for="left">left:</label>
-                <input type="number" id="left">
-            </div>
-
-            <div>
-                <label for="time">time:</label>
-                <input type="time" id="time">
-            </div>
-
-            <div>
-                <label for="topscore">top score:</label>
-                <input type="number" id="topscore">
-            </div>
-        </nav>
-
-        <button id="Silent">Silent</button>
-        
-        
-    </div>
+    <video autoplay muted loop id="background-video">
+        <source src="stable--4-2025-01-05T18_30_19Z.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div id="all"></div>
+    <script src="/scripts/game.js"></script>
 </body>
 </html>
