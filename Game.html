@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
-    <link rel="stylesheet" href="/assets/styles/Gamestyle.css">
+    <link rel="stylesheet" href="test.css">
 </head>
+
 <body>
+    <!-- Video Background -->
     <video autoplay muted loop id="background-video">
         <source src="stable--4-2025-01-05T18_30_19Z.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <div id="all"></div>
-    <script src="/scripts/game.js"></script>
+
+    <div id="game-container">
+        <!-- Sidebar (Game Info) -->
+        <div id="sidebar">
+            <!-- Buttons -->
+            <div id="buttons-container">
+                <button id="start-btn">Start Game</button>
+                <button id="restart-btn">Restart</button>
+                <button id="silent-btn">Silent</button>
+            </div>
+
+            <!-- Game Info -->
+            <div class="game-info">
+                <label for="match">Match:</label>
+                <input type="number" id="match" value="0" readonly>
+            </div>
+            <div class="game-info">
+                <label for="moves">Moves:</label>
+                <input type="number" id="moves" value="0" readonly>
+            </div>
+            <div class="game-info">
+                <label for="time">Time:</label>
+                <input type="text" id="time" value="00:00" readonly>
+            </div>
+            <div class="game-info">
+                <label for="left">Left:</label>
+                <input type="number" id="left" value="0" readonly>
+            </div>
+            <div class="game-info">
+                <label for="topscore">Top Score:</label>
+                <input type="number" id="topscore" value="0" readonly>
+            </div>
+        </div>
+
+        <!-- Game Board -->
+        <div id="all"></div>
+    </div>
+
+    <script src="test.js" ></script>
 </body>
+
 </html>

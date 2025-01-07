@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlipMatch</title>
-    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="homeS.css">
 </head>
 
 <body>
@@ -14,21 +14,27 @@
         <source src="stable--4-2025-01-05T18_30_19Z.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+      <!-- GIF Background -->
+      <!-- <div  id="background-gif">
+        <source src="smooth_transition_gif.gif" type="gif">
+         Your browser does not support the video tag. -->
+    <!-- </div>  -->
+
 
     <div id="container">
         <h1>FlipMatch</h1>
         <div id="btns">
             <button id="start-btn">Start Game</button>
             <div id="dropdown-start" class="hidden">
-                <button class="dropdown-btn">Level 1</button>
-                <button class="dropdown-btn">Level 2</button>
-                <button class="dropdown-btn">Level 3</button>
+                <button class="dropdown-btn" data-level="1">Level 1 (4×4)</button>
+                <button class="dropdown-btn" data-level="2">Level 2 (6×6)</button>
+                <button class="dropdown-btn" data-level="3">Level 3 (8×8)</button>
             </div>
 
             <button id="themes-btn">Themes</button>
             <div id="dropdown-themes" class="hidden">
                 <button class="dropdown-btn">Football</button>
-                <button class="dropdown-btn">Animie</button>
+                <button class="dropdown-btn">Anime</button>
                 <button class="dropdown-btn">Animals</button>
                 <button class="dropdown-btn">Animation</button>
             </div>
@@ -41,7 +47,8 @@
             </div>
         </div>
     </div>
-    <script src="/scripts/main.js"></script>
+
+    <script src="homeJs.js"></script>
 </body>
 
 </html>
