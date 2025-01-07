@@ -1,3 +1,18 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #1e3c72, #2a5298);
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Background Video Styling */
 #background-video {
     position: fixed;
     top: 0;
@@ -6,20 +21,32 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: brightness(0.7) blur(2px);
+    filter: brightness(0.7) blur(1px);
+    transform: scale(1.02); /* تكبير طفيف لجعل الحركة أكثر سلاسة */
+    animation: smooth-video 20s ; /* حركة ناعمة */
 }
-
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    color: white;
-}
+/* حركة سلسة للفيديو */
+/* @keyframes smooth-video {
+    0% {
+        transform: scale(1.02) translateX(0);
+    }
+    50% {
+        transform: scale(1.04) translateX(-10px);
+    }
+    100% {
+        transform: scale(1.02) translateX(0);
+    }
+} */
+/* Background GIF Styling */
+/* #background-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('smooth_transition_gif.gif') no-repeat center center / cover;
+    z-index: -1;
+} */
 
 #container {
     display: flex;
@@ -63,18 +90,6 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-.dropdown-btn {
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    color: white;
-    padding: 10px;
-    font-size: 1rem; 
-    border-radius: 20px;
-}
-
-.dropdown-btn:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
 .hidden {
     display: none;
 }
@@ -86,116 +101,35 @@ button:hover {
     margin-top: 10px;
 }
 
-
-#dropdown-settings {
-    text-align: center;
-    color: #2c3e50;
-}
-
-#audio-volume {
-    width: 100%;
-    margin: 10px 0;
-}
-
-#dropdown-settings p {
-    font-size: 1rem;
-    color: #2c3e50;
-    margin: 0;
-}
-
-
-#audio-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#audio-controls label {
-    font-size: 1rem;
-    font-weight: bold;
+.dropdown-btn {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
     color: white;
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-#audio-volume {
-    width: 90%;
-    height: 10px;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-}
-
-#audio-volume::-webkit-slider-thumb {
-    width: 18px;
-    height: 18px;
-    background: #ffffff;
-    border: 2px solid #6a11cb;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-#audio-volume::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-#audio-volume::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-    background: #ffffff;
-    border: 2px solid #6a11cb;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-#audio-volume::-moz-range-thumb:hover {
-    transform: scale(1.2);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-#audio-controls p {
+    padding: 10px;
     font-size: 1rem;
-    color: white;
-    margin-top: 10px;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
 }
 
+.dropdown-btn:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     #container {
-        width: 90%;
-        padding: 20px;
+        width: 100%; /* جعل العرض 100% */
+        padding: 15px;
     }
 
     #container h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem; /* تقليل حجم النص أكثر */
     }
 
     button {
-        font-size: 1rem;
-        padding: 10px;
+        font-size: 0.9rem;
+        padding: 8px;
     }
 
+    .dropdown-btn {
+        font-size: 0.8rem; /* تصغير حجم أزرار القائمة المنسدلة */
+        padding: 8px;
+    }
 }
-
-
-
-
-
-
-
-
-
-
