@@ -12,7 +12,6 @@ body {
     overflow: hidden;
 }
 
-
 #background-video {
     position: fixed;
     top: 0;
@@ -43,7 +42,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    width: 20%; /* Reduced width for better aesthetics */
+    width: 20%;
     background: rgba(0, 0, 0, 0.7);
     color: white;
     border-radius: 20px 0 0 20px;
@@ -51,17 +50,9 @@ body {
     gap: 20px;
 }
 
-.game-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
 .game-info label {
     font-size: 0.9rem;
     font-weight: bold;
-    margin-bottom: 5px;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -93,7 +84,6 @@ button {
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    text-align: center;
 }
 
 button:hover {
@@ -103,26 +93,18 @@ button:hover {
 
 /* Game Board */
 #all {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80%; /* يمكنك ضبط العرض حسب الحاجة */
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7); /* نفس خلفية الشريط الجانبي */
-    border-radius: 20px; /* تعديل الزوايا لتناسق أفضل */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
-    overflow: hidden;
-}
-#cards-container {
     display: grid;
+    gap: 10px;
+    padding: 20px;
     width: 100%;
     height: 100%;
-    gap: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    box-sizing: border-box;
 }
 
-#cards-container div {
+/* Card Styling */
+#all .card {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     display: flex;
     justify-content: center;
@@ -130,47 +112,13 @@ button:hover {
     color: white;
     font-weight: bold;
     border-radius: 10px;
+    aspect-ratio: 1; /* Ensures square cards */
+    width: 50%; /* Cards will fill the grid cell */
+    max-width: none;
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
-#cards-container div:hover {
+#all .card:hover {
     transform: scale(1.05);
     background: linear-gradient(135deg, #2575fc, #6a11cb);
-}
-
-/* Responsive grid for large grids */
-#cards-container[data-grid-size="4"] div {
-    aspect-ratio: 1; /* Ensures squares */
-}
-
-#cards-container[data-grid-size="6"] div {
-    aspect-ratio: 1; /* Adjust for 6x6 grid */
-}
-
-#cards-container[data-grid-size="8"] div {
-    aspect-ratio: 1; /* Adjust for 8x8 grid */
-}
-
-@media (max-width: 480px) {
-    #sidebar {
-        padding: 5px;
-    }
-
-    .game-info label {
-        font-size: 0.7rem;
-    }
-
-    .game-info input {
-        width: 40px;
-        font-size: 0.7rem;
-    }
-
-    button {
-        font-size: 0.8rem;
-        padding: 6px 8px;
-    }
-
-    #all {
-        padding: 5px;
-    }
 }

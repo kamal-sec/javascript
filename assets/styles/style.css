@@ -22,32 +22,10 @@ body {
     object-fit: cover;
     z-index: -1;
     filter: brightness(0.7) blur(1px);
-    transform: scale(1.02); /* تكبير طفيف لجعل الحركة أكثر سلاسة */
-    animation: smooth-video 20s ; /* حركة ناعمة */
+    transform: scale(1.02);
 }
-/* حركة سلسة للفيديو */
-/* @keyframes smooth-video {
-    0% {
-        transform: scale(1.02) translateX(0);
-    }
-    50% {
-        transform: scale(1.04) translateX(-10px);
-    }
-    100% {
-        transform: scale(1.02) translateX(0);
-    }
-} */
-/* Background GIF Styling */
-/* #background-gif {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('smooth_transition_gif.gif') no-repeat center center / cover;
-    z-index: -1;
-} */
 
+/* Container Styling */
 #container {
     display: flex;
     flex-direction: column;
@@ -94,13 +72,6 @@ button:hover {
     display: none;
 }
 
-.hidden.active {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
 .dropdown-btn {
     background: linear-gradient(to right, #ff7e5f, #feb47b);
     color: white;
@@ -113,14 +84,23 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* Selected Theme and Level Styling */
+button.selected {
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    box-shadow: 0 8px 16px rgba(255, 0, 0, 0.5);
+    transform: scale(1.05);
+    border: 2px solid white;
+}
+
 @media (max-width: 480px) {
     #container {
-        width: 100%; /* جعل العرض 100% */
+        width: 100%;
         padding: 15px;
     }
 
     #container h1 {
-        font-size: 1.8rem; /* تقليل حجم النص أكثر */
+        font-size: 1.8rem;
     }
 
     button {
@@ -129,7 +109,7 @@ button:hover {
     }
 
     .dropdown-btn {
-        font-size: 0.8rem; /* تصغير حجم أزرار القائمة المنسدلة */
+        font-size: 0.8rem;
         padding: 8px;
     }
 }

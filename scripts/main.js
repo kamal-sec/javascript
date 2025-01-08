@@ -1,80 +1,93 @@
- // Show/hide dropdowns for Start, Themes, and Settings
- const startBtn = document.getElementById("start-btn");
- const dropdownStart = document.getElementById("dropdown-start");
- const themesBtn = document.getElementById("themes-btn");
- const dropdownThemes = document.getElementById("dropdown-themes");
- const settingsBtn = document.getElementById("settings-btn");
- const dropdownSettings = document.getElementById("dropdown-settings");
+// Show/hide dropdowns for Start, Themes, and Settings
+const startBtn = document.getElementById("start-btn");
+const dropdownStart = document.getElementById("dropdown-start");
+const themesBtn = document.getElementById("themes-btn");
+const dropdownThemes = document.getElementById("dropdown-themes");
+const settingsBtn = document.getElementById("settings-btn");
+const dropdownSettings = document.getElementById("dropdown-settings");
 
- // Toggle visibility of dropdown
- function toggleDropdown(dropdown) {
-     dropdown.classList.toggle("hidden");
- }
+// Disable Start button initially
+startBtn.disabled = true;
+startBtn.style.opacity = "0.5";
 
- startBtn.addEventListener("click", () => {
-     toggleDropdown(dropdownStart);
-     dropdownThemes.classList.add("hidden");
-     dropdownSettings.classList.add("hidden");
- });
+// Theme Selection Logic
+let selectedTheme = null;
+const themeButtons = document.querySelectorAll("#dropdown-themes button");
+const themeError = document.getElementById("theme-error");
 
- themesBtn.addEventListener("click", () => {
-     toggleDropdown(dropdownThemes);
-     dropdownStart.classList.add("hidden");
-     dropdownSettings.classList.add("hidden");
- });
+themeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        // Remove 'selected' class from all buttons
+        themeButtons.forEach((btn) => btn.classList.remove("selected"));
 
- settingsBtn.addEventListener("click", () => {
-     toggleDropdown(dropdownSettings);
-     dropdownStart.classList.add("hidden");
-     dropdownThemes.classList.add("hidden");
- });
+        // Add 'selected' class to the clicked button
+        button.classList.add("selected");
 
- // Redirect to game page with selected level
- const levelButtons = document.querySelectorAll(".dropdown-btn[data-level]");
- levelButtons.forEach((button) => {
-     button.addEventListener("click", () => {
-         const level = button.getAttribute("data-level");
-         window.location.href = `in.html?level=${level}`;
-     });
- });
+        // Store the selected theme
+        selectedTheme = button.textContent;
 
- // Update volume slider value
- const audioVolume = document.getElementById("audio-volume");
- const volumeValue = document.getElementById("volume-value");
+        // Enable Start button after selecting a theme
+        startBtn.disabled = false;
+        startBtn.style.opacity = "1";
 
-audioVolume.addEventListener("input", () => {
-  volumeValue.textContent = audioVolume.value;
+        // Hide error message if displayed
+        themeError.style.display = "none";
+
+        // Close the themes dropdown
+        dropdownThemes.classList.add("hidden");
+    });
 });
 
-// themes selection
-let selectedTheme = null;
-let themeButtons = document.querySelectorAll("#dropdown-themes button");
-for (let i = 0; i < themeButtons.length; i++) {
-  themeButtons[i].addEventListener("click", () => {
-    //add class selected to the clicked button
-    themeButtons[i].classList.add("selected");
-    selectedTheme = themeButtons[i].textContent;
-    toggleVisibility(dropdownThemes);
-    themeerror.style.display = "none";
-  });
+// Dropdown visibility toggle
+function toggleDropdown(dropdown) {
+    dropdown.classList.toggle("hidden");
 }
 
-// Start Button
+// Dropdown logic for Start, Themes, and Settings
 startBtn.addEventListener("click", () => {
-  if (!selectedTheme) {
-    themeerror.style.display = "block";
-    return;
-  }
+    if (!selectedTheme) {
+        themeError.style.display = "block"; // Show error if no theme is selected
+        return;
+    }
+    toggleDropdown(dropdownStart);
+    dropdownThemes.classList.add("hidden");
+    dropdownSettings.classList.add("hidden");
+});
 
-  if (selectedTheme === "Football") {
-    window.location.href = "football.html";
-  } else if (selectedTheme === "Anime") {
-    window.location.href = "anime.html";
-  } else if (selectedTheme === "Animals") {
-    window.location.href = "animals.html";
-  } else if (selectedTheme === "Animation") {
-    window.location.href = "animation.html";
-  } else {
-    alert("Invalid theme selected!");
-  }
+themesBtn.addEventListener("click", () => {
+    toggleDropdown(dropdownThemes);
+    dropdownStart.classList.add("hidden");
+    dropdownSettings.classList.add("hidden");
+});
+
+settingsBtn.addEventListener("click", () => {
+    toggleDropdown(dropdownSettings);
+    dropdownStart.classList.add("hidden");
+    dropdownThemes.classList.add("hidden");
+});
+
+// Level Selection Logic
+const levelButtons = document.querySelectorAll(".dropdown-btn[data-level]");
+levelButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        // Ensure only one level can be selected
+        levelButtons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+
+        // Get the selected level
+        const level = button.getAttribute("data-level");
+
+        // Redirect to game.html with selected theme and level
+        if (selectedTheme) {
+            window.location.href = `/game.html?theme=${selectedTheme}&level=${level}`;
+        }
+    });
+});
+
+// Update volume slider value
+const audioVolume = document.getElementById("audio-volume");
+const volumeValue = document.getElementById("volume-value");
+
+audioVolume.addEventListener("input", () => {
+    volumeValue.textContent = audioVolume.value;
 });
