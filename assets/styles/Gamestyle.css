@@ -113,9 +113,33 @@ button:hover {
     font-weight: bold;
     border-radius: 10px;
     aspect-ratio: 1; /* Ensures square cards */
-    width: 50%; /* Cards will fill the grid cell */
-    max-width: none;
     transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(0);
+    cursor: pointer;
+}
+
+/* Front face (hidden image) */
+.card .front {
+    transform: rotateY(180deg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; /* Matches the card size */
+    height: 100%; /* Matches the card size */
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+/* Back face (visible side) */
+.card .back {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
 }
 
 #all .card:hover {

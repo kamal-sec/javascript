@@ -106,5 +106,5 @@ export function getThemeImages(theme){
         ]
         
     }
-    return themePhotos[theme.toLowerCase()] || [];
+    return themePhotos[theme.toLowerCase()]?themePhotos[theme.toLowerCase()] : [];
 }

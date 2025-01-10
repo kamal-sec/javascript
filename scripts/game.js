@@ -16,21 +16,77 @@ function createCards(gridSize, images) {
     allContainer.style.gap = "10px";
 
     const totalCards = gridSize * gridSize;
+    const shuffledImages = [...images, ...images] // Create pairs of images
+        .sort(() => Math.random() - 0.5) // Shuffle images randomly
+        .slice(0, totalCards); // Adjust the number of cards to grid size
+
+    let flippedCards = [];
+    let matchedPairs = 0;
 
     for (let i = 0; i < totalCards; i++) {
         const card = document.createElement("div");
-        card.className = "card";
+        card.style.position = "relative";
+        card.style.transformStyle = "preserve-3d";
+        card.style.transform = "rotateY(0)";
+        card.style.transition = "transform 0.6s";
+        card.style.cursor = "pointer";
 
-        // Assign an image from the theme
-        const img = document.createElement("img");
-        img.src = images[i % images.length]; // Cycle through the theme's images
-        img.alt = `Card ${i + 1}`;
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
+        // Front face (hidden image)
+        const frontFace = document.createElement("div");
+        frontFace.style.backgroundImage = `url('${shuffledImages[i]}')`;
+        frontFace.style.backgroundSize = "contain"; // Ensure the entire image fits within the card
+        frontFace.style.backgroundPosition = "center";
+        frontFace.style.backgroundRepeat = "no-repeat";
+        frontFace.style.position = "absolute";
+        frontFace.style.width = "100%"; // Match the card width
+        frontFace.style.height = "100%"; // Match the card height
+        frontFace.style.backfaceVisibility = "hidden";
+        frontFace.style.transform = "rotateY(180deg)";
+        frontFace.style.borderRadius = "10px";
+        // Back face (visible by default)
+        const backFace = document.createElement("div");
+        backFace.style.position = "absolute";
+        backFace.style.width = "80%";
+        backFace.style.height = "90%";
+        backFace.style.backfaceVisibility = "hidden";
+        backFace.style.background = "linear-gradient(135deg, #6a11cb, #2575fc)";
+        backFace.style.borderRadius = "10px";
 
-        card.appendChild(img); // Add the image to the card
-        allContainer.appendChild(card); // Add the card to the container
+        // Flip logic
+        card.addEventListener("click", () => {
+            if (flippedCards.length < 2 && card.style.transform === "rotateY(0deg)") {
+                card.style.transform = "rotateY(180deg)";
+                flippedCards.push(card);
+
+                if (flippedCards.length === 2) {
+                    const [card1, card2] = flippedCards;
+
+                    // Check for match
+                    const isMatch =
+                        card1.querySelector("div").style.backgroundImage ===
+                        card2.querySelector("div").style.backgroundImage;
+
+                    if (isMatch) {
+                        flippedCards = [];
+                        matchedPairs++;
+                        if (matchedPairs === totalCards / 2) {
+                            alert("You won!");
+                        }
+                    } else {
+                        // Flip back if no match
+                        setTimeout(() => {
+                            card1.style.transform = "rotateY(0)";
+                            card2.style.transform = "rotateY(0)";
+                            flippedCards = [];
+                        }, 1000);
+                    }
+                }
+            }
+        });
+
+        card.appendChild(frontFace);
+        card.appendChild(backFace);
+        allContainer.appendChild(card);
     }
 }
 
