@@ -65,10 +65,16 @@ function createCards(gridSize, images) {
                     const isMatch =
                         card1.querySelector("div").style.backgroundImage ===
                         card2.querySelector("div").style.backgroundImage;
-
+                    ;
                     if (isMatch) {
                         flippedCards = [];
                         matchedPairs++;
+                        // add one match
+                        const matchInput = document.getElementById("match");
+                        matchInput.value = parseInt(matchInput.value) + 1;
+                        // add one move
+                        const movesInput = document.getElementById("moves");
+                        movesInput.value = parseInt(movesInput.value) + 1;
                         if (matchedPairs === totalCards / 2) {
                             alert("You won!");
                         }
@@ -78,6 +84,9 @@ function createCards(gridSize, images) {
                             card1.style.transform = "rotateY(0)";
                             card2.style.transform = "rotateY(0)";
                             flippedCards = [];
+                            // add one move
+                            const movesInput = document.getElementById("moves");
+                        movesInput.value = parseInt(movesInput.value) + 1;
                         }, 1000);
                     }
                 }
