@@ -52,6 +52,10 @@ function createCards(gridSize, images) {
         backFace.style.background = "linear-gradient(135deg, #6a11cb, #2575fc)";
         backFace.style.borderRadius = "10px";
 
+        // Sounds
+        const matchSound = document.getElementById('matchSound');
+        const noMatchSound = document.getElementById('noMatchSound');
+
         // Flip logic
         card.addEventListener("click", () => {
             if (flippedCards.length < 2 && card.style.transform === "rotateY(0deg)") {
@@ -67,6 +71,7 @@ function createCards(gridSize, images) {
                         card2.querySelector("div").style.backgroundImage;
                     ;
                     if (isMatch) {
+                        matchSound.play();
                         flippedCards = [];
                         matchedPairs++;
                         // add one match
@@ -79,6 +84,7 @@ function createCards(gridSize, images) {
                             alert("You won!");
                         }
                     } else {
+                        noMatchSound.play();
                         // Flip back if no match
                         setTimeout(() => {
                             card1.style.transform = "rotateY(0)";
