@@ -295,5 +295,5 @@ export function getThemeImages(theme , level){
         return [];
     }
 
-    return themePhotos[theme.toLowerCase()]?themePhotos[theme.toLowerCase()] : [];
+    // return themePhotos[theme.toLowerCase()]?themePhotos[theme.toLowerCase()] : [];
 }

@@ -12,7 +12,6 @@ body {
     overflow: hidden;
 }
 
-/* Background Video Styling */
 #background-video {
     position: fixed;
     top: 0;
@@ -84,15 +83,6 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Selected Theme and Level Styling */
-button.selected {
-    background: linear-gradient(to right, #ff512f, #dd2476);
-    color: white;
-    box-shadow: 0 8px 16px rgba(255, 0, 0, 0.5);
-    transform: scale(1.05);
-    border: 2px solid white;
-}
-
 /* Dropdown Styling */
 #dropdown-settings {
     display: none;
@@ -111,66 +101,70 @@ button.selected {
     width: 250px;
 }
 
-/* Label Styling */
-#dropdown-settings label {
-    display: block;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #f8f9fa;
-}
-
-/* Range Slider Styling */
-#dropdown-settings input[type="range"] {
-    width: 100%;
-    height: 10px;
-    border-radius: 5px;
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
-    outline: none;
-    appearance: none;
-    margin: 10px 0;
-    cursor: pointer;
-}
-
-#dropdown-settings input[type="range"]::-webkit-slider-thumb {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-}
-
-#dropdown-settings input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-}
-
-/* Volume Indicator */
-.volume-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    font-size: 1rem;
+/* Game Board */
+#all {
+    display: grid;
     gap: 10px;
-    color: #f8f9fa;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 0px;
+    box-sizing: border-box;
 }
 
-#volume-icon {
-    font-size: 1.2rem;
+/* Card Styling */
+#all .card {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    aspect-ratio: 1; /* Ensures square cards */
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(0);
+    cursor: pointer;
 }
 
+/* Front face (hidden image) */
+.card .front {
+    transform: rotateY(180deg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%; /* Matches the card size */
+    height: 100%; /* Matches the card size */
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
 
-@media (max-width: 480px) {
+/* Back face (visible side) */
+.card .back {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+#all .card:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 576px) {
     #container {
-        width: 100%;
-        padding: 15px;
+        width: 90%; /* Adjust container width */
+        padding: 20px;
     }
 
     #container h1 {
@@ -178,12 +172,52 @@ button.selected {
     }
 
     button {
-        font-size: 0.9rem;
-        padding: 8px;
+        font-size: 1rem;
+        padding: 10px;
     }
 
-    .dropdown-btn {
-        font-size: 0.8rem;
-        padding: 8px;
+    #all {
+        gap: 5px;
+    }
+
+    #all .card {
+        gap: 5px;
+    }
+}
+
+/* Small devices (landscape phones, 576px to 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+    #container {
+        width: 80%;
+    }
+
+    #container h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1.1rem;
+    }
+}
+
+/* Medium devices (tablets, 768px to 992px) */
+@media (min-width: 768px) and (max-width: 992px) {
+    #container {
+        width: 70%;
+    }
+
+    #container h1 {
+        font-size: 2.2rem;
+    }
+
+    button {
+        font-size: 1.2rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    #container {
+        width: 400px;
     }
 }

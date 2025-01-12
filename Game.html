@@ -11,23 +11,19 @@
 </head>
 
 <body>
-    <!-- Video Background -->
     <video autoplay muted loop id="background-video">
         <source src="stable--4-2025-01-05T18_30_19Z.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <div id="game-container">
-        <!-- Sidebar (Game Info) -->
         <div id="sidebar">
-            <!-- Buttons -->
             <div id="buttons-container">
                 <button id="start-btn">Start Game</button>
                 <button id="restart-btn">Restart</button>
                 <button id="silent-btn">Silent</button>
             </div>
 
-            <!-- Game Info -->
             <div class="game-info">
                 <label for="match">Match:</label>
                 <input type="number" id="match" value="0" readonly>
@@ -50,21 +46,17 @@
             </div>
         </div>
 
-        <!-- Game Board -->
         <div id="all"></div>
     </div>
     
-    <!-- Audio -->
-    <audio id="matchSound" src="assets/match.mp3"></audio>
-    <audio id="noMatchSound" src="assets/no-match.mp3"></audio>
+    <audio id="matchSound" src="assets/audio/match.mp3"></audio>
+    <audio id="noMatchSound" src="assets/audio/no-match.mp3"></audio>
     
     <script type="module" src="/scripts/game.js"></script>
     <script type="module" src="/scripts/theme.js"></script>
 
     <audio autoplay loop id="audio">
-        <source src="/assets/project_background_music.mp3"audio/mpeg">
-        <script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
-
+        <source src="/assets/audio/project_background_music.mp3" type="audio/mpeg">
     </audio>
 
 </body>
