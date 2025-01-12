@@ -167,7 +167,13 @@ silentBtn.addEventListener("click", () => {
     const gameAudio = document.getElementById("audio");
     isMuted = !isMuted;
     gameAudio.muted = isMuted;
-    silentBtn.textContent = isMuted ? "Unmute" : "Silent";
+    const speakerIcon = document.getElementById('speaker-icon')
+    // silentBtn.textContent = isMuted ? "Unmute" : "Silent";
+    if (speakerIcon.src.includes('assets/styles/mute.png')) {
+        speakerIcon.src = 'assets/styles/muted.png';
+    }else {
+            speakerIcon.src = 'assets/styles/mute.png'; 
+        }
 });
 
 const restartBtn = document.getElementById("restart-btn");

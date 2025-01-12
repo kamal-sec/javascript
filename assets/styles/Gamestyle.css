@@ -93,6 +93,21 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+#silent-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    z-index: 1000; /* Ensure it stays on top */
+}
+#silent-btn img {
+    width: 24px; /* Adjust size */
+    height: 24px;
+}
+
+
 /* Game Board */
 #all {
     display: grid;
