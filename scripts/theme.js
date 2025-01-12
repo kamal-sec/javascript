@@ -289,7 +289,7 @@ export function getThemeImages(theme , level){
 
     if (themePhotos[theme.toLowerCase()]) {
         const levelKey = `level${level}`;
-        return themePhotos[theme.toLowerCase()][levelKey] || [];
+        return themePhotos[theme.toLowerCase()][levelKey] ? themePhotos[theme.toLowerCase()][levelKey] : [];
     } else {
         console.error(`Theme "${theme}" not found.`);
         return [];

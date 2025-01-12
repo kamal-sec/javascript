@@ -1,4 +1,3 @@
-/* General Styling */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #1e3c72, #2a5298);
@@ -24,7 +23,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Container Styling */
 #container {
     display: flex;
     flex-direction: column;
@@ -83,7 +81,6 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Dropdown Styling */
 #dropdown-settings {
     display: none;
     background: rgba(50, 50, 50, 0.9);
@@ -101,7 +98,6 @@ button:hover {
     width: 250px;
 }
 
-/* Game Board */
 #all {
     display: grid;
     gap: 10px;
@@ -113,7 +109,6 @@ button:hover {
     box-sizing: border-box;
 }
 
-/* Card Styling */
 #all .card {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     display: flex;
@@ -122,7 +117,7 @@ button:hover {
     color: white;
     font-weight: bold;
     border-radius: 10px;
-    aspect-ratio: 1; /* Ensures square cards */
+    aspect-ratio: 1;
     transition: transform 0.3s ease, background 0.3s ease;
     position: relative;
     transform-style: preserve-3d;
@@ -130,20 +125,18 @@ button:hover {
     cursor: pointer;
 }
 
-/* Front face (hidden image) */
 .card .front {
     transform: rotateY(180deg);
-    background-size: cover; /* Ensures the image fills the container */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100%; /* Matches the card size */
-    height: 100%; /* Matches the card size */
+    width: 100%;
+    height: 100%;
     position: absolute;
     backface-visibility: hidden;
     border-radius: 10px;
 }
 
-/* Back face (visible side) */
 .card .back {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     width: 100%;
@@ -158,12 +151,9 @@ button:hover {
     background: linear-gradient(135deg, #2575fc, #6a11cb);
 }
 
-/* Media Queries for Responsiveness */
-
-/* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 576px) {
     #container {
-        width: 90%; /* Adjust container width */
+        width: 90%;
         padding: 20px;
     }
 
@@ -185,7 +175,6 @@ button:hover {
     }
 }
 
-/* Small devices (landscape phones, 576px to 768px) */
 @media (min-width: 576px) and (max-width: 768px) {
     #container {
         width: 80%;
@@ -200,7 +189,6 @@ button:hover {
     }
 }
 
-/* Medium devices (tablets, 768px to 992px) */
 @media (min-width: 768px) and (max-width: 992px) {
     #container {
         width: 70%;
@@ -215,7 +203,6 @@ button:hover {
     }
 }
 
-/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     #container {
         width: 400px;
