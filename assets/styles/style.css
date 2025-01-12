@@ -73,7 +73,7 @@ button:hover {
 }
 
 .dropdown-btn {
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to right, #d46184, #f8a5c2);
     color: white;
     padding: 10px;
     font-size: 1rem;
@@ -92,6 +92,80 @@ button.selected {
     transform: scale(1.05);
     border: 2px solid white;
 }
+
+/* Dropdown Styling */
+#dropdown-settings {
+    display: none;
+    background: rgba(50, 50, 50, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 120%;
+    left: 0;
+    z-index: 100;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 250px;
+}
+
+/* Label Styling */
+#dropdown-settings label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #f8f9fa;
+}
+
+/* Range Slider Styling */
+#dropdown-settings input[type="range"] {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    outline: none;
+    appearance: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+#dropdown-settings input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+#dropdown-settings input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+/* Volume Indicator */
+.volume-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    gap: 10px;
+    color: #f8f9fa;
+}
+
+#volume-icon {
+    font-size: 1.2rem;
+}
+
 
 @media (max-width: 480px) {
     #container {

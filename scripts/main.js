@@ -57,3 +57,38 @@ for (let i = 0; i < levelButtons.length; i++) {
         }
     });
 };
+
+const settingsBtn = document.querySelector("#settings-btn");
+const dropdownSettings = document.querySelector("#dropdown-settings");
+const audio = document.querySelector("audio");
+const audioVolume = document.getElementById("audio-volume");
+const volumeValue = document.getElementById("volume-value");
+const volumeIcon = document.getElementById("volume-icon");
+
+// Toggle dropdown visibility
+settingsBtn.addEventListener("click", () => {
+    const rect = settingsBtn.getBoundingClientRect();
+    dropdownSettings.style.top = `${rect.bottom + window.scrollY}px`;
+    dropdownSettings.style.left = `${rect.left}px`;
+    dropdownSettings.style.display =
+        dropdownSettings.style.display === "block" ? "none" : "block";
+});
+
+// Update audio volume
+audioVolume.addEventListener("input", () => {
+    const volume = audioVolume.value / 100;
+    audio.volume = volume;
+    volumeValue.textContent = `${audioVolume.value}%`;
+
+    // Change icon based on volume level
+    if (volume === 0) {
+        volumeIcon.textContent = "🔇";
+    } else if (volume <= 0.5) {
+        volumeIcon.textContent = "🔉";
+    } else {
+        volumeIcon.textContent = "🔊";
+    }
+});
+
+// Set default volume
+audio.volume = audioVolume.value / 100;
