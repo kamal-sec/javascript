@@ -190,6 +190,112 @@ button:hover {
     
 }
 
+.firework {
+    position: absolute;
+    bottom: 0;
+    width: 5px;
+    height: 5px;
+    background: transparent;
+    animation: launch 1s ease-in-out, fadeOut 3s forwards;
+    z-index: 1000;
+}
+
+@keyframes launch {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.explosion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    animation: explode 1s forwards ease-out;
+}
+
+.spark {
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    animation: fly 1s forwards ease-out;
+}
+
+@keyframes explode {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(calc(100px * var(--dx)), calc(100px * var(--dy)));
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes launch {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(-200px);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes expand {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(4);
+    }
+}
+
+@keyframes sparkMove {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(50px * (random() - 0.5)), calc(50px * (random() - 0.5)));
+        opacity: 0;
+    }
+}
 
 
 @media (min-width: 481px) and (max-width: 779px) {

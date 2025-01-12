@@ -214,40 +214,46 @@ function showCelebration() {
     celebrationOverlay.style.zIndex = "1000";
     celebrationOverlay.style.display = "flex";
     celebrationOverlay.style.flexDirection = "column";
-    celebrationOverlay.style.justifyContent = "center";
-    celebrationOverlay.style.alignItems = "center";
+    celebrationOverlay.style.justifyContent = "center"; 
+    celebrationOverlay.style.alignItems = "center"; 
     celebrationOverlay.style.color = "white";
     celebrationOverlay.style.fontSize = "2rem";
     celebrationOverlay.style.textAlign = "center";
+    celebrationOverlay.style.gap = "20px"; 
 
     const message = document.createElement("div");
     message.innerHTML = `
         🎉 <strong>Congratulations!</strong> 🎉 <br>
         Your Score: ${movesCount} <br>
         ${movesCount <= topScore ? `<span style="color: #FFD700;">New Top Score! 🏆</span>` : ""}
-        <button id="closeBtn" style="
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: #fff;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        ">Play Again</button>
     `;
+
+    const playAgainBtn = document.createElement("button");
+    playAgainBtn.id = "closeBtn";
+    playAgainBtn.textContent = "Play Again";
+    playAgainBtn.style.padding = "10px 20px";
+    playAgainBtn.style.fontSize = "1rem";
+    playAgainBtn.style.color = "#fff";
+    playAgainBtn.style.background = "linear-gradient(to right, #6a11cb, #2575fc)";
+    playAgainBtn.style.border = "none";
+    playAgainBtn.style.borderRadius = "5px";
+    playAgainBtn.style.cursor = "pointer";
+
     celebrationOverlay.appendChild(message);
+    celebrationOverlay.appendChild(playAgainBtn);
     document.body.appendChild(celebrationOverlay);
 
-    const closeBtn = document.getElementById("closeBtn");
-    closeBtn.addEventListener("click", closeCelebration);
+    playAgainBtn.addEventListener("click", closeCelebration);
+
+    const clapSound = document.getElementById("clapSound");
+    clapSound.play();
 
     launchFireworks();
 
     confetti({
         particleCount: 200,
         spread: 120,
-        origin: { y: 0.6 }
+        origin: { y: 0.6 },
     });
 
     const duration = 5 * 1000;
@@ -261,7 +267,7 @@ function showCelebration() {
         confetti({
             particleCount: 50,
             spread: 80,
-            origin: { x: Math.random(), y: Math.random() * 0.6 }
+            origin: { x: Math.random(), y: Math.random() * 0.6 },
         });
     }, 250);
 }
@@ -274,34 +280,59 @@ function launchFireworks() {
     for (let i = 0; i < 5; i++) {
         setTimeout(() => {
             createFirework();
-        }, i * 500);
+        }, i * 500); 
     }
 }
 
 function createFirework() {
     const firework = document.createElement("div");
-    firework.classList.add("firework");
+    firework.className = "firework";
+    firework.style.position = "absolute";
+    firework.style.bottom = "0";
+    firework.style.left = `${Math.random() * 100}%`; 
+    firework.style.width = "5px";
+    firework.style.height = "50px";
+    firework.style.background = "linear-gradient(to top, red, yellow)";
+    firework.style.animation = "launch 1.5s ease-out, fadeOut 2s ease-out 1.5s";
+    document.body.appendChild(firework);
 
+    setTimeout(() => {
+        createExplosion(firework.offsetLeft, firework.offsetTop);
+        firework.remove(); 
+    }, 1500);
+}
+
+function createExplosion(x, y) {
     const explosion = document.createElement("div");
-    explosion.classList.add("explosion");
+    explosion.className = "explosion";
+    explosion.style.position = "absolute";
+    explosion.style.left = `${x}px`;
+    explosion.style.top = `${y}px`;
+    explosion.style.width = "100px";
+    explosion.style.height = "100px";
+    explosion.style.transform = "translate(-50%, -50%)";
+    explosion.style.borderRadius = "50%";
+    explosion.style.background = "radial-gradient(circle, rgba(255, 165, 0, 0.8), rgba(255, 0, 0, 0))";
+    explosion.style.animation = "expand 1s ease-out, fadeOut 1s ease-out";
+    document.body.appendChild(explosion);
+
 
     for (let i = 0; i < 15; i++) {
         const spark = document.createElement("div");
-        spark.classList.add("spark");
+        spark.className = "spark";
+        spark.style.position = "absolute";
+        spark.style.width = "5px";
+        spark.style.height = "5px";
         spark.style.backgroundColor = getRandomColor();
+        spark.style.borderRadius = "50%";
+        spark.style.animation = `sparkMove 1s ease-out`;
+        spark.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
         explosion.appendChild(spark);
     }
 
-    firework.appendChild(explosion);
-    document.body.appendChild(firework);
-
-    const randomX = Math.random() * window.innerWidth;
-    firework.style.left = `${randomX}px`;
-
-    setTimeout(() => {
-        firework.remove();
-    }, 10000);
+    setTimeout(() => explosion.remove(), 1000);
 }
+
 
 function getRandomColor() {
     const colors = ["#FF5733", "#FFC300", "#DAF7A6", "#581845", "#33FF57", "#33FFF9", "#FF33F6"];
