@@ -63,8 +63,10 @@ function createCards(gridSize, images) {
 
         const matchSound = document.getElementById('matchSound');
         const noMatchSound = document.getElementById('noMatchSound');
+        const flipSound = document.getElementById('flipSound');
 
         card.addEventListener("click", () => {
+            flipSound.play();
             if (flippedCards.length < 2 && card.style.transform === "rotateY(0deg)") {
                 card.style.transform = "rotateY(180deg)";
                 flippedCards.push(card);
