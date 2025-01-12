@@ -159,6 +159,39 @@ button:hover {
     }
 }
 
+
+@keyframes ColorMovement {
+    0% {
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+    }
+    25% {
+        box-shadow: 10px 0 20px 5px rgba(255, 255, 0, 0.8);
+    }
+    50% {
+        box-shadow: 0 10px 20px 5px rgba(255, 255, 255, 0.8);
+    }
+    75% {
+        box-shadow: -10px 0 20px 5px rgba(225, 255, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+
+
+.matched {
+    box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.7); 
+    
+}
+
+.nonmatched {
+    box-shadow: 0 0 15px 5px rgba(225, 0, 0, 0.7); 
+    
+}
+
+
+
 @media (min-width: 481px) and (max-width: 779px) {
     #all {
         display: grid;

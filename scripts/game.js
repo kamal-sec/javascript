@@ -69,7 +69,12 @@ function createCards(gridSize, images) {
             flipSound.play();
             if (flippedCards.length < 2 && card.style.transform === "rotateY(0deg)") {
                 card.style.transform = "rotateY(180deg)";
+                card.style.animation = "ColorMovement 0.6s infinite";
                 flippedCards.push(card);
+
+                setTimeout(() => {
+                    card.style.animation = "none"; 
+                }, 600); 
 
                 if (flippedCards.length === 2) {
                     movesCount++;
@@ -87,6 +92,13 @@ function createCards(gridSize, images) {
                         document.getElementById("match").value = matchedPairs;
 
                         document.getElementById("left").value = totalPairs - matchedPairs;
+                
+                         card1.classList.add('matched');
+                         card2.classList.add('matched');
+                         setTimeout(() => {
+                          card1.classList.remove('matched');
+                          card2.classList.remove('matched');
+                           }, 1500); 
 
                         if (matchedPairs === totalPairs) {
                             clearInterval(timerInterval);
@@ -103,6 +115,14 @@ function createCards(gridSize, images) {
                             card2.style.transform = "rotateY(0)";
                             flippedCards = [];
                         }, 1000);
+
+                        card1.classList.add('nonmatched');
+                        card2.classList.add('nonmatched');
+                        setTimeout(() => {
+                         card1.classList.remove('nonmatched');
+                         card2.classList.remove('nonmatched');
+                         }, 1300);
+
                     }
                 }
             }
