@@ -6,6 +6,11 @@ const level = parseInt(urlParams.get("level"));
 
 const allContainer = document.getElementById("all");
 
+const homeBtn = document.getElementById('home-btn');
+homeBtn.addEventListener('click', () => {
+    window.location.href = "Home.html"; 
+});
+
 let timerInterval;
 let elapsedTime = 0;
 let movesCount = 0;
@@ -31,15 +36,28 @@ function createCards(gridSize, images) {
     let flippedCards = [];
     let isClickable = false;
 
+    function startTimer() {
+        clearInterval(timerInterval);
+        elapsedTime = 0;
+        const timeInput = document.getElementById("time");
+    
+        timerInterval = setInterval(() => {
+            elapsedTime++;
+            const minutes = Math.floor(elapsedTime / 60).toString().padStart(2, "0");
+            const seconds = (elapsedTime % 60).toString().padStart(2, "0");
+            timeInput.value = `${minutes}:${seconds}`;
+        }, 1000);
+    }
+
     function showOverlay() {
         const overlay = document.getElementById('Go_overlay');
         overlay.style.opacity = '1';
   
         setTimeout(() => {
           overlay.style.opacity = '0';
+          startTimer();
         }, 1000); 
       }
-
     function startGame() {
         const cards = document.querySelectorAll('.cards');
     
@@ -186,18 +204,7 @@ function createCards(gridSize, images) {
     startGame();
 }
 
-function startTimer() {
-    clearInterval(timerInterval);
-    elapsedTime = 0;
-    const timeInput = document.getElementById("time");
 
-    timerInterval = setInterval(() => {
-        elapsedTime++;
-        const minutes = Math.floor(elapsedTime / 60).toString().padStart(2, "0");
-        const seconds = (elapsedTime % 60).toString().padStart(2, "0");
-        timeInput.value = `${minutes}:${seconds}`;
-    }, 1000);
-}
 
 function resetGame() {
     clearInterval(timerInterval);
