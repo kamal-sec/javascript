@@ -114,7 +114,7 @@ function createCards(gridSize, images) {
         const flipSound = document.getElementById('flipSound');
 
         card.addEventListener("click", () => {
-            if (!isClickable || flippedCards.length >= 2 || card.classList.contains('matched')) {
+            if (!isClickable || flippedCards.length >= 2 || card.classList.contains('matched') ||card.style.transform === "rotateY(180deg)" ) {
                 return;
             }
 
