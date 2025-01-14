@@ -172,11 +172,12 @@ export function getThemeImages(theme , level){
                 {image: "/assets/styles/Cards/Animition/26.png",sound: "/assets/audio/animition/26.mp3"},
                  {image:"/assets/styles/Cards/Animition/27.png",sound: "/assets/audio/animition/27.mp3"},
                  {image:"/assets/styles/Cards/Animition/28.png",sound: "/assets/audio/animition/28.mp3"},
-                 {image:"/assets/styles/Cards/Animition/28-1.png",sound: "/assets/audio/animition/28-1.mp3"},
+                //  {image:"/assets/styles/Cards/Animition/28-1.png",sound: "/assets/audio/animition/28-1.mp3"},
                  {image: "/assets/styles/Cards/Animition/29.png",sound: "/assets/audio/animition/29.mp3"},
                  {image: "/assets/styles/Cards/Animition/30.png",sound: "/assets/audio/animition/30.mp3"},
                  {image: "/assets/styles/Cards/Animition/31.png",sound: "/assets/audio/animition/31.mp3"},
                  {image: "/assets/styles/Cards/Animition/32.png",sound: "/assets/audio/animition/32.mp3"},
+                 {image: "/assets/styles/Cards/Animition/80.png",sound: "/assets/audio/animition/80.mp3"},
 
                 
             ],
@@ -194,7 +195,7 @@ export function getThemeImages(theme , level){
                  {image: "/assets/styles/Cards/Animition/26.png",sound: "/assets/audio/animition/26.mp3"},
                   {image:"/assets/styles/Cards/Animition/27.png",sound: "/assets/audio/animition/27.mp3"},
                   {image:"/assets/styles/Cards/Animition/28.png",sound: "/assets/audio/animition/28.mp3"},
-                  {image:"/assets/styles/Cards/Animition/28-1.png",sound: "/assets/audio/animition/28-1.mp3"},
+                //   {image:"/assets/styles/Cards/Animition/28-1.png",sound: "/assets/audio/animition/28-1.mp3"},
                   {image: "/assets/styles/Cards/Animition/29.png",sound: "/assets/audio/animition/29.mp3"},
                   {image: "/assets/styles/Cards/Animition/30.png",sound: "/assets/audio/animition/30.mp3"},
                   {image: "/assets/styles/Cards/Animition/31.png",sound: "/assets/audio/animition/31.mp3"},
@@ -204,6 +205,8 @@ export function getThemeImages(theme , level){
                    {image:"/assets/styles/Cards/Animition/35.png",sound: "/assets/audio/animition/35.mp3"},
                    {image:"/assets/styles/Cards/Animition/36.png",sound: "/assets/audio/animition/36.mp3"},
                    {image: "/assets/styles/Cards/Animition/38.png",sound: "/assets/audio/animition/38.mp3"},
+                   {image: "/assets/styles/Cards/Animition/39.png",sound: "/assets/audio/animition/39.mp3"},
+                   {image: "/assets/styles/Cards/Animition/40.png",sound: "/assets/audio/animition/40.mp3"},
                    {image: "/assets/styles/Cards/Animition/41.png",sound: "/assets/audio/animition/41.mp3"},
                    {image: "/assets/styles/Cards/Animition/43.png",sound: "/assets/audio/animition/43.mp3"},
                    {image: "/assets/styles/Cards/Animition/44.png",sound: "/assets/audio/animition/44.mp3"},
@@ -212,10 +215,10 @@ export function getThemeImages(theme , level){
                    {image: "/assets/styles/Cards/Animition/48.png",sound: "/assets/audio/animition/48.mp3"},
                    {image: "/assets/styles/Cards/Animition/50.png",sound: "/assets/audio/animition/50.mp3"},
                    {image: "/assets/styles/Cards/Animition/51.png",sound: "/assets/audio/animition/51.mp3"},
-                   {image: "/assets/styles/Cards/Animition/53.png",sound: "/assets/audio/animition/53.mp3"},
-                   {image: "/assets/styles/Cards/Animition/55.png",sound: "/assets/audio/animition/55.mp3"},
-                   {image: "/assets/styles/Cards/Animition/70.png",sound: "/assets/audio/animition/70.mp3"},
-                   {image: "/assets/styles/Cards/Animition/80.png",sound: "/assets/audio/animition/80.mp3"},
+                //    {image: "/assets/styles/Cards/Animition/53.png",sound: "/assets/audio/animition/53.mp3"},
+                //    {image: "/assets/styles/Cards/Animition/55.png",sound: "/assets/audio/animition/55.mp3"},
+                //    {image: "/assets/styles/Cards/Animition/70.png",sound: "/assets/audio/animition/70.mp3"},
+                //    {image: "/assets/styles/Cards/Animition/80.png",sound: "/assets/audio/animition/80.mp3"},
 
             
             ]
