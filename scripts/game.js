@@ -6,6 +6,11 @@ const level = parseInt(urlParams.get("level"));
 
 const allContainer = document.getElementById("all");
 
+const homeBtn = document.getElementById('home-btn');
+homeBtn.addEventListener('click', () => {
+    window.location.href = "Home.html"; 
+});
+
 let timerInterval;
 let elapsedTime = 0;
 let movesCount = 0;
@@ -28,9 +33,55 @@ function createCards(gridSize, images) {
     const pairedImages = [...images, ...images].slice(0, totalCards).sort(() => Math.random() - 0.5);
 
     let flippedCards = [];
+    let isClickable = false;
+
+    function startTimer() {
+        clearInterval(timerInterval);
+        elapsedTime = 0;
+        const timeInput = document.getElementById("time");
+    
+        timerInterval = setInterval(() => {
+            elapsedTime++;
+            const minutes = Math.floor(elapsedTime / 60).toString().padStart(2, "0");
+            const seconds = (elapsedTime % 60).toString().padStart(2, "0");
+            timeInput.value = `${minutes}:${seconds}`;
+        }, 1000);
+    }
+
+    function showOverlay() {
+        const overlay = document.getElementById('Go_overlay');
+        overlay.style.opacity = '1';
+  
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+          startTimer();
+        }, 1000); 
+      }
+    function startGame() {
+        const cards = document.querySelectorAll('.cards');
+    
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].style.transform = "rotateY(0deg)"; 
+        }
+        setTimeout(() => {
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].style.transform = "rotateY(180deg)";
+            }
+            setTimeout(() => {
+                
+                for (let i = 0; i < cards.length; i++) {
+                    cards[i].style.transform = "rotateY(0deg)";
+                }
+                showOverlay();
+                isClickable = true;
+                
+            }, 3000); 
+        }, 1000); 
+    }
 
     pairedImages.forEach((imageData) => {
         const card = document.createElement("div");
+        card.classList.add("cards");
         card.style.position = "relative";
         card.style.transformStyle = "preserve-3d";
         card.style.transform = "rotateY(0)";
@@ -54,7 +105,7 @@ function createCards(gridSize, images) {
         backFace.style.width = "100%";
         backFace.style.height = "100%";
         backFace.style.backfaceVisibility = "hidden";
-        backFace.style.backgroundImage = "url('/assets/styles/logo.jpg')";
+        backFace.style.backgroundImage = "url('/assets/styles/logo.png')";
         backFace.style.backgroundSize = "cover";
         backFace.style.backgroundPosition = "center";
         backFace.style.backgroundRepeat = "no-repeat";
@@ -66,7 +117,8 @@ function createCards(gridSize, images) {
 
         card.addEventListener("click", () => {
             flipSound.play();
-            if (flippedCards.length < 2 && !card.classList.contains('matched')) {
+
+            if (flippedCards.length < 2 && !card.classList.contains('matched')&& isClickable) {
                 card.style.transform = "rotateY(180deg)";
                 card.style.animation = "ColorMovement 0.6s infinite";
                 flippedCards.push({ card, imageData }); // Store the card and its imageData
@@ -75,6 +127,8 @@ function createCards(gridSize, images) {
                     card.style.animation = "none";
                 }, 600);
 
+
+                flippedCards.push(card);
                 if (flippedCards.length === 2) {
                     movesCount++;
                     document.getElementById("moves").value = movesCount;
@@ -90,10 +144,29 @@ function createCards(gridSize, images) {
                         animalSound.play();
 
                         matchSound.play();
+
+                        const handleTransitionEnd = () => {
+                            card1.classList.add('matched');
+                            card2.classList.add('matched');
+                    
+                            card1.removeEventListener('transitionend', handleTransitionEnd);
+                            card2.removeEventListener('transitionend', handleTransitionEnd);
+
+                            setTimeout(() => {
+                                card1.classList.remove('matched');
+                                card2.classList.remove('matched');
+                            }, 800);
+                        };
+                    
+                        card1.addEventListener('transitionend', handleTransitionEnd);
+                        card2.addEventListener('transitionend', handleTransitionEnd);
+
+
                         flippedCards = [];
                         matchedPairs++;
                         document.getElementById("match").value = matchedPairs;
                         document.getElementById("left").value = totalPairs - matchedPairs;
+
 
                         card1.card.classList.add('matched');
                         card2.card.classList.add('matched');
@@ -101,6 +174,7 @@ function createCards(gridSize, images) {
                             card1.card.classList.remove('matched');
                             card2.card.classList.remove('matched');
                         }, 1500);
+
 
                         if (matchedPairs === totalPairs) {
                             clearInterval(timerInterval);
@@ -112,11 +186,28 @@ function createCards(gridSize, images) {
                         }
                     } else {
                         noMatchSound.play();
+                        const handleNonMatchTransitionEnd = () => {
+                            card1.classList.add('nonmatched');
+                            card2.classList.add('nonmatched');
+                    
+                            card1.removeEventListener('transitionend', handleNonMatchTransitionEnd);
+                            card2.removeEventListener('transitionend', handleNonMatchTransitionEnd);
+                    
+                            setTimeout(() => {
+                                card1.classList.remove('nonmatched');
+                                card2.classList.remove('nonmatched');
+                            }, 800);
+                        };
+                    
+                        card1.addEventListener('transitionend', handleNonMatchTransitionEnd);
+                        card2.addEventListener('transitionend', handleNonMatchTransitionEnd);
+
                         setTimeout(() => {
                             card1.card.style.transform = "rotateY(0)";
                             card2.card.style.transform = "rotateY(0)";
                             flippedCards = [];
                         }, 1000);
+
 
                         card1.card.classList.add('nonmatched');
                         card2.card.classList.add('nonmatched');
@@ -124,6 +215,7 @@ function createCards(gridSize, images) {
                             card1.card.classList.remove('nonmatched');
                             card2.card.classList.remove('nonmatched');
                         }, 1300);
+
                     }
                 }
             }
@@ -132,21 +224,12 @@ function createCards(gridSize, images) {
         card.appendChild(frontFace);
         card.appendChild(backFace);
         allContainer.appendChild(card);
+
     });
+
 }
 
-function startTimer() {
-    clearInterval(timerInterval);
-    elapsedTime = 0;
-    const timeInput = document.getElementById("time");
 
-    timerInterval = setInterval(() => {
-        elapsedTime++;
-        const minutes = Math.floor(elapsedTime / 60).toString().padStart(2, "0");
-        const seconds = (elapsedTime % 60).toString().padStart(2, "0");
-        timeInput.value = `${minutes}:${seconds}`;
-    }, 1000);
-}
 
 function resetGame() {
     clearInterval(timerInterval);
@@ -188,7 +271,9 @@ silentBtn.addEventListener("click", () => {
     const gameAudio = document.getElementById("audio");
     isMuted = !isMuted;
     gameAudio.muted = isMuted;
+
     const speakerIcon = document.getElementById('speaker-icon');
+
     if (speakerIcon.src.includes('assets/styles/mute.png')) {
         speakerIcon.src = 'assets/styles/muted.png';
     } else {
@@ -220,6 +305,22 @@ function showCelebration() {
     celebrationOverlay.style.textAlign = "center";
     celebrationOverlay.style.gap = "20px"; 
 
+    const Xbtn = document.createElement("button");
+    Xbtn.textContent = "×";
+    Xbtn.style.position = "absolute";
+    Xbtn.style.top = "10px";
+    Xbtn.style.right = "10px";
+    Xbtn.style.fontSize = "1.5rem";
+    Xbtn.style.color = "#fff";
+    Xbtn.style.background = "transparent";
+    Xbtn.style.border = "none";
+    Xbtn.style.cursor = "pointer";
+    Xbtn.style.fontWeight = "bold";
+
+    Xbtn.addEventListener("click", () => {
+        celebrationOverlay.remove(); 
+    });
+
     const message = document.createElement("div");
     message.innerHTML = `
         🎉 <strong>Congratulations!</strong> 🎉 <br>
@@ -239,6 +340,7 @@ function showCelebration() {
     playAgainBtn.style.cursor = "pointer";
 
     celebrationOverlay.appendChild(message);
+    celebrationOverlay.appendChild(Xbtn);
     celebrationOverlay.appendChild(playAgainBtn);
     document.body.appendChild(celebrationOverlay);
 
