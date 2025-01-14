@@ -28,9 +28,12 @@ for (let i = 0; i < themeButtons.length; i++) {
 }
 
 themesBtn.addEventListener("click", () => {
-    dropdownThemes.style.display =
-        dropdownThemes.style.display === "none" ? "block" : "none";
-});
+    if (dropdownThemes.style.display === "none" || dropdownThemes.style.display === "") {
+      dropdownThemes.style.display = "block";
+    } else {
+      dropdownThemes.style.display = "none";
+    }
+  });
 
 startBtn.addEventListener("click", () => {
     if (selectedTheme) {
@@ -89,7 +92,7 @@ howToPlayBtn.addEventListener("click", () => {
         rulesDiv.style.position = "fixed";
         rulesDiv.style.top = "50%";
         rulesDiv.style.left = "50%";
-        rulesDiv.style.transform = "translate(-50%, -50%)";
+        rulesDiv.style.transform = "translate(-50%,-220%)";
         rulesDiv.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
         rulesDiv.style.color = "white";
         rulesDiv.style.padding = "20px";
