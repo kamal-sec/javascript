@@ -135,14 +135,14 @@ export function getThemeImages(theme , level){
                 "/assets/styles/Cards/anime/22.png",
                 "/assets/styles/Cards/anime/23.png",
                 "/assets/styles/Cards/anime/24.png",
-                "/assets/styles/Cards/anime/1.png",
-                "/assets/styles/Cards/anime/2.png",
-                "/assets/styles/Cards/anime/3.png",
-                "/assets/styles/Cards/anime/4.png",
-                "/assets/styles/Cards/anime/5.png",
-                "/assets/styles/Cards/anime/6.png",
-                "/assets/styles/Cards/anime/7.png",
-                "/assets/styles/Cards/anime/8.png",
+                "/assets/styles/Cards/anime/25.png",
+                "/assets/styles/Cards/anime/26.png",
+                "/assets/styles/Cards/anime/27.png",
+                "/assets/styles/Cards/anime/28.png",
+                "/assets/styles/Cards/anime/29.png",
+                "/assets/styles/Cards/anime/30.png",
+                "/assets/styles/Cards/anime/31.png",
+                "/assets/styles/Cards/anime/32.png",
             ]
            
         },
@@ -208,6 +208,15 @@ export function getThemeImages(theme , level){
                 "/assets/styles/Cards/animitions/22.png",
                 "/assets/styles/Cards/animitions/23.png",
                 "/assets/styles/Cards/animitions/24.png",
+                "/assets/styles/Cards/animitions/25.png",
+                "/assets/styles/Cards/animitions/26.png",
+                "/assets/styles/Cards/animitions/27.png",
+                "/assets/styles/Cards/animitions/28.png",
+                "/assets/styles/Cards/animitions/29.png",
+                "/assets/styles/Cards/animitions/30.png",
+                "/assets/styles/Cards/animitions/31.png",
+                "/assets/styles/Cards/animitions/32.png",
+            
             ]
             
         },
@@ -281,6 +290,14 @@ export function getThemeImages(theme , level){
                 "/assets/styles/Cards/football/chelsea.png",
                 "/assets/styles/Cards/football/city.png",
                 "/assets/styles/Cards/football/dortmund.png",
+                "/assets/styles/Cards/football/al_ahly.png",
+                "/assets/styles/Cards/football/elnasr.png",
+                "/assets/styles/Cards/football/fullham.png",
+                "/assets/styles/Cards/football/hillal.png",
+                "/assets/styles/Cards/football/notngham.png",
+                "/assets/styles/Cards/football/porto.png",
+                "/assets/styles/Cards/football/sporting_lesbona.png",
+                "/assets/styles/Cards/football/zamallek.png",
             ]
             
         }
