@@ -149,7 +149,7 @@ export function getThemeImages(theme , level){
         },
         animation:{
             level1: [
-               {image: "/assets/styles/Cards/animitions/1.png",sound: "/assets/audio/animal/32.mp3"},
+               {image: "/assets/styles/Cards/animitions/2.png",sound: "/assets/audio/animal/32.mp3"},
                {image: "/assets/styles/Cards/animitions/2.png",sound: "/assets/audio/animal/32.mp3"},
                {image: "/assets/styles/Cards/animitions/3.png",sound: "/assets/audio/animal/32.mp3"},
                 {image:"/assets/styles/Cards/animitions/4.png",sound: "/assets/audio/animal/32.mp3"},
