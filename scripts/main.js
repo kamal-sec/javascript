@@ -30,6 +30,8 @@ for (let i = 0; i < themeButtons.length; i++) {
 themesBtn.addEventListener("click", () => {
     if (dropdownThemes.style.display === "none" || dropdownThemes.style.display === "") {
       dropdownThemes.style.display = "block";
+      dropdownSettings.style.display = "none";
+
     } else {
       dropdownThemes.style.display = "none";
     }
@@ -38,8 +40,10 @@ themesBtn.addEventListener("click", () => {
 startBtn.addEventListener("click", () => {
     if (selectedTheme) {
         dropdownStart.style.display = "block";
+        dropdownSettings.style.display = "none";
     } else {
         alert("Please select a theme before starting the game.");
+        dropdownSettings.style.display = "none";
     }
 });
 
@@ -66,6 +70,7 @@ settingsBtn.addEventListener("click", () => {
     dropdownSettings.style.left = `${rect.left}px`;
     dropdownSettings.style.display =
         dropdownSettings.style.display === "block" ? "none" : "block";
+       
 });
 
 audioVolume.addEventListener("input", () => {

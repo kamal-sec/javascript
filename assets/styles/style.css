@@ -83,9 +83,10 @@ button:hover {
 
 #dropdown-settings {
     display: none;
-    background: rgba(50, 50, 50, 0.9);
+    background: linear-gradient(to right, #d46184, #f8a5c2);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 30px;
+    height: 30px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 120%;
